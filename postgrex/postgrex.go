@@ -117,3 +117,16 @@ func Pool(maxIdle, maxOpen, maxLifetime int) poolOption {
 		sqlDB.SetConnMaxLifetime(time.Duration(maxLifetime) * time.Second)
 	}
 }
+
+func Level(lv string) logger.LogLevel {
+	switch lv {
+	case "error":
+		return logger.Error
+	case "warn":
+		return logger.Warn
+	case "info":
+		return logger.Info
+	default:
+		return logger.Silent
+	}
+}
